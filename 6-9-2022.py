@@ -239,7 +239,7 @@ while True:
         print("Update destination: ",list_city[randint(2,15)])
         client.publish("destination", list_city[randint(2,15)])
     else:
-        print("It is flying to New York!")
+        print("It is flying to {}".format(list_city[city_arrival]))
 
     # end.
     time.sleep(10)
