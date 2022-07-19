@@ -248,11 +248,12 @@ while True:
             print("Update destination: ",list_city[next_city_arrival])
 
         client.publish("destination", list_city[next_city_arrival])
+        
+        #update arrival_last
+        city_arrival= next_city_arrival
     else:
         print(f"It is flying to {list_city[city_arrival]}")
 
-    #update last_arrival
-    city_arrival= next_city_arrival
 
     # end.
     time.sleep(10)
