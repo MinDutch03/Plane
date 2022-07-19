@@ -235,7 +235,7 @@ while True:
     
     # destination
     city_arrival = randint(1,15)
-    if altitude == 0 or speed < 30 or list_city[city_arrival]== "New York":
+    if altitude_last == 0 or speed_last < 30 or list_city[city_arrival]== "New York":
         print("Update destination: ",list_city[randint(2,15)])
         client.publish("destination", list_city[randint(2,15)])
     else:
