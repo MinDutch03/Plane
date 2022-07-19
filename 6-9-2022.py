@@ -8,7 +8,7 @@ from sqlalchemy import except_, update
 
 AIO_FEED_ID = ""
 AIO_USERNAME = "namelessbtw"
-AIO_KEY = "aio_IqvG76uWuQBVVZupLeeKEvr2ZjM2"
+AIO_KEY = "aio_FFhN75OynaGUP509I2PF4O4BzU2P"
 
 def  connected(client):
     print("Service connected")
@@ -251,6 +251,7 @@ while True:
         city_arrival= next_city_arrival
     else:
         print(f"It is flying to {list_city[city_arrival]}")
+        client.publish("destination", list_city[city_arrival])
 
 
     # end.
