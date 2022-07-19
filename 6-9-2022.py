@@ -8,7 +8,7 @@ from sqlalchemy import except_, update
 
 AIO_FEED_ID = ""
 AIO_USERNAME = "namelessbtw"
-AIO_KEY = "aio_FZkg364PGZXNveNoT7PlKU9N4tsb"
+AIO_KEY = "aio_IqvG76uWuQBVVZupLeeKEvr2ZjM2"
 
 def  connected(client):
     print("Service connected")
