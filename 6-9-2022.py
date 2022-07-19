@@ -1,9 +1,10 @@
 from logging import exception
 from random import randint, choice
+from sqlite3 import SQLITE_UPDATE
 import time
 import  sys
 from  Adafruit_IO import  MQTTClient
-from sqlalchemy import except_
+from sqlalchemy import except_, update
 
 AIO_FEED_ID = ""
 AIO_USERNAME = "namelessbtw"
@@ -82,6 +83,7 @@ list_city = {
 }
 city_arrival = randint(1,15)
 next_city_arrival = randint(1,15)
+city_arrival_list = {}
 
 while True:
     # latitude
@@ -240,12 +242,17 @@ while True:
         if list_city[next_city_arrival] == list_city[city_arrival]:
             next_city_arrival = randint(1,15)
             print("Update destination: ",list_city[next_city_arrival])
-            client.publish("destination", list_city[next_city_arrival])
+
         else:
             print("Update destination: ",list_city[next_city_arrival])
-            client.publish("destination", list_city[next_city_arrival])
+
+        client.publish("destination", list_city[next_city_arrival])
     else:
         print("It is flying to {}".format(list_city[city_arrival]))
+
+    #update last_arrival
+    city_arrival_last = city_arrival_list.update(list_city[city_arrival])
+    print(city_arrival_last)
 
     # end.
     time.sleep(10)
