@@ -80,6 +80,8 @@ list_city = {
     14: "Seattle",
     15: "Boston"
 }
+city_arrival = randint(1,15)
+next_city_arrival = randint(1,15)
 
 while True:
     # latitude
@@ -234,10 +236,14 @@ while True:
     fuel_last = min([fuel, 100])
     
     # destination
-    city_arrival = randint(1,15)
-    if altitude_last == 0 or speed_last < 30 or list_city[city_arrival]== "New York":
-        print("Update destination: ",list_city[randint(2,15)])
-        client.publish("destination", list_city[randint(2,15)])
+    if altitude_last == 0 and speed_last == 0:
+        if list_city[next_city_arrival] == list_city[city_arrival]:
+            next_city_arrival = randint(1,15)
+            print("Update destination: ",list_city[next_city_arrival])
+            client.publish("destination", list_city[next_city_arrival])
+        else:
+            print("Update destination: ",list_city[next_city_arrival])
+            client.publish("destination", list_city[next_city_arrival])
     else:
         print("It is flying to {}".format(list_city[city_arrival]))
 
