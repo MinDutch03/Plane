@@ -8,7 +8,7 @@ from sqlalchemy import except_, update
 
 AIO_FEED_ID = ""
 AIO_USERNAME = "namelessbtw"
-AIO_KEY = "aio_qivp89hGSRBDQSxskGr7UY84XvHk"
+AIO_KEY = "aio_reZb12CYqac1Gk2uDvRC5sPtNAvR"
 
 def  connected(client):
     print("Service connected")
@@ -229,7 +229,7 @@ while True:
     
     # update fuel
     print("Update fuel:", min([fuel, 100]))
-    client.publish("altitude", min([fuel, 100]))
+    client.publish("fuel", min([fuel, 100]))
     fuel_last = min([fuel, 100])
     
     # destination
